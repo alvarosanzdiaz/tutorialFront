@@ -1,5 +1,6 @@
 <div class="container">
-    <h1>Crear categoría</h1>
+    <h1 *ngIf="category.id == null">Crear categoría</h1>
+    <h1 *ngIf="category.id != null">Modificar categoría</h1>
 
     <form>
         <mat-form-field>
