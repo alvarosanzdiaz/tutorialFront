@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { CategoryModule } from './category/category.module';
+import { AuthorModule } from './author/author.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { CategoryModule } from './category/category.module';
     AppRoutingModule,
     CoreModule,
     CategoryModule,
+    AuthorModule,
     BrowserAnimationsModule
   ],
   providers: [],
