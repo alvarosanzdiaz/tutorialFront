@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ClientService } from '../client.service';
 import { Client } from '../model/Client';
+import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-client-edit',
@@ -16,7 +17,8 @@ export class ClientEditComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ClientEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private clientService: ClientService
+    private clientService: ClientService,
+    readonly snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -28,11 +30,21 @@ export class ClientEditComponent implements OnInit {
     }
   }
 
-  onSave() {
-    this.clientService.saveClient(this.client).subscribe(result => {
-      this.dialogRef.close();
-    });    
-  }  
+  
+  onSave(){
+    this.clientService.saveClient(this.client).subscribe({
+      next: (result) => {this.dialogRef.close();},
+    
+      error: (result) => {
+         this.snackBar.open('Cliente Existente', '', {
+          duration:3000,
+          verticalPosition:'top'
+         });
+      }
+  });
+    
+    
+  }
 
   onClose() {
     this.dialogRef.close();
