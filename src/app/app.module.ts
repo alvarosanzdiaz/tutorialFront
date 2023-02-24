@@ -9,6 +9,7 @@ import { CategoryModule } from './category/category.module';
 import { AuthorModule } from './author/author.module';
 import { GameModule } from './game/game.module';
 import { ClientModule } from './client/client.module';
+import { LoanModule } from './loan/loan.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ClientModule } from './client/client.module';
     AuthorModule,
     GameModule,
     ClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    LoanModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

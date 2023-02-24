@@ -1,0 +1,54 @@
+<div class="container">
+    <h1 *ngIf="loan.id == null">Crear prestamo</h1>
+
+    <form>
+        <mat-form-field>
+            <mat-label>Identificador</mat-label>
+            <input type="number" matInput placeholder="Identificador" [(ngModel)]="loan.id" name="id" disabled>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Nombre cliente</mat-label>
+            <mat-select disableRipple [(ngModel)]="loan.client" name="client" required>
+                <mat-option *ngFor="let client of clients" [value]="client">{{client.name}}</mat-option>
+            </mat-select>
+            <mat-error>El nombre del cliente no puede estar vacío</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Nombre juego </mat-label>
+            <mat-select disableRipple [(ngModel)]="loan.game" name="game" required>
+                <mat-option *ngFor="let game of games" [value]="game">{{game.title}}</mat-option>
+            </mat-select>
+            <mat-error>El título no puede estar vacío</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Fecha inicio</mat-label>
+            <input type="date" matInput placeholder="Fecha inicio del préstamo"          
+            [(ngModel)]="loan.initial_date" name="initial_date" required
+            (ngModelChange) ="checkFinalDate()" required>
+            <mat-error>Fecha inicio no puede estar vacía</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Fecha fin</mat-label>
+            <input type="date" matInput placeholder="Fecha fin del préstamo" 
+                [(ngModel)]="loan.final_date" name="final_date" required
+                (ngModelChange) ="checkFinalDate()" required
+                (ngModelChange) ="isGamePrested()" required
+                (ngModelChange) ="exceedGames()" required>
+            <mat-error>Fecha fin no puede estar vacía</mat-error>
+
+        </mat-form-field>  
+    </form>
+
+    <div class="buttons">
+        <button mat-stroked-button (click)="onClose()">Cerrar</button>
+        <button mat-stroked-button (click)="onSave()">Guardar</button>
+        <mat-error *ngIf="fechaDevolucionInvalida" > La fecha de final del prestamo debe ser mayor o igual a la fecha de inicio</mat-error>
+        <mat-error *ngIf="tiempoPrestamoExcedido" > El alquiler no puede pasar los 14 dias</mat-error>
+        <mat-error *ngIf="gamePrested" > Este juego ya está prestado a un cliente</mat-error>
+        <mat-error *ngIf="gamesExceded" > El cliente tiene más de dos juegos alquilados en ese intervalo de tiempo</mat-error>
+    </div>
+</div>
