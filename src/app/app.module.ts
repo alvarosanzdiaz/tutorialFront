@@ -10,7 +10,7 @@ import { AuthorModule } from './author/author.module';
 import { GameModule } from './game/game.module';
 import { ClientModule } from './client/client.module';
 import { LoanModule } from './loan/loan.module';
-
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent
@@ -26,7 +26,7 @@ import { LoanModule } from './loan/loan.module';
     BrowserAnimationsModule,
     LoanModule,
   ],
-  providers: [],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'es-ES' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

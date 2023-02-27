@@ -62,8 +62,8 @@ export class LoanEditComponent implements OnInit {
         }
         checkFinalDate(){
 
-            const fechaInicio = new Date(this.loan.initial_date);
-            const fechaFin = new Date(this.loan.final_date);
+            const fechaInicio = new Date(this.loan.initialDate);
+            const fechaFin = new Date(this.loan.finalDate);
             const diffTime = fechaFin.getTime() - fechaInicio.getTime();
             const diffDays = diffTime / (1000 * 60 * 60 * 24)
     

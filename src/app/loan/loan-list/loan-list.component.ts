@@ -29,7 +29,7 @@ export class LoanListComponent implements OnInit {
     filterGame: Game;
     filterDate: Date;
     dataSource = new MatTableDataSource<Loan>();
-    displayedColumns: string[] = ['id','gameTitle','clientName','initial_date','final_date','action'];
+    displayedColumns: string[] = ['id','gameTitle','clientName','initialDate','finalDate','action'];
 
     constructor(
         private gameService: GameService,

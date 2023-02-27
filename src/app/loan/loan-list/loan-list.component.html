@@ -16,10 +16,14 @@
                 </mat-select>            
             </mat-form-field>
         
-        <mat-form-field>
-            <mat-label for="fecha">Selecciona una fecha: </mat-label>
-            <input type="date" matInput [(ngModel)]="filterDate" name="fecha">
-            </mat-form-field>
+        <mat-form-field> 
+            <mat-label for="fecha">Selecciona una fecha: </mat-label> 
+            <input matInput [matDatepicker]="picker2" placeholder="Filtro prestamo"          
+            [(ngModel)]="filterDate" name="fecha" >
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
 
         </form>
 
@@ -50,14 +54,14 @@
 
 
 
-        <ng-container matColumnDef="initial_date">
+        <ng-container matColumnDef="initialDate">
             <mat-header-cell *matHeaderCellDef> Fecha prestamo  </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.initial_date | date: 'dd/MM/yyyy'}} </mat-cell>
+            <mat-cell *matCellDef="let element"> {{element.initialDate | date: 'dd/MM/yyyy'}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="final_date">
+        <ng-container matColumnDef="finalDate">
             <mat-header-cell *matHeaderCellDef> Fecha devolucion  </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.final_date | date: 'dd/MM/yyyy'}} </mat-cell>
+            <mat-cell *matCellDef="let element"> {{element.finalDate | date: 'dd/MM/yyyy'}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="action">

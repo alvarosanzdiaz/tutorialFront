@@ -25,7 +25,7 @@ export class LoanService {
     saveLoan(loan: Loan): Observable<void> {
         let url = 'http://localhost:8080/loan';
         if (loan.id != null) url += '/'+loan.id;
-
+        
         return this.http.put<void>(url, loan);
     }
 
@@ -60,7 +60,8 @@ export class LoanService {
 
         if (fecha != null) {
             if (params != '') params += "&";
-            params += "initial_date="+fecha;
+        
+            params += "initialDate="+fecha.toLocaleDateString();
         }
 
         let url = 'http://localhost:8080/loan'

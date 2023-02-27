@@ -25,20 +25,28 @@
 
         <mat-form-field>
             <mat-label>Fecha inicio</mat-label>
-            <input type="date" matInput placeholder="Fecha inicio del préstamo"          
-            [(ngModel)]="loan.initial_date" name="initial_date" required
+            <input matInput [matDatepicker]="picker" placeholder="Fecha inicio del préstamo"          
+            [(ngModel)]="loan.initialDate" name="initialDate" required
             (ngModelChange) ="checkFinalDate()" required>
-            <mat-error>Fecha inicio no puede estar vacía</mat-error>
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error>Fecha inicial no puede estar vacía</mat-error>
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>Fecha fin</mat-label>
-            <input type="date" matInput placeholder="Fecha fin del préstamo" 
-                [(ngModel)]="loan.final_date" name="final_date" required
+            
+                 
+                <input matInput [matDatepicker]="picker1" placeholder="Fecha Final del préstamo"          
+                [(ngModel)]="loan.finalDate" name="finalDate" required
                 (ngModelChange) ="checkFinalDate()" required
                 (ngModelChange) ="isGamePrested()" required
                 (ngModelChange) ="exceedGames()" required>
-            <mat-error>Fecha fin no puede estar vacía</mat-error>
+                <mat-hint>DD/MM/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+                <mat-error>Fecha final no puede estar vacía</mat-error>
 
         </mat-form-field>  
     </form>
